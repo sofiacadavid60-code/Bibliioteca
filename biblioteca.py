@@ -79,6 +79,26 @@ def buscar_libro():
     if not encontrado:
         print("Libro no encontrado.")
 
+def buscar_por_autor():
+
+    autor_buscar = input("Ingrese el autor a buscar: ")
+
+    encontrado = False
+
+    for libro in biblioteca:
+
+        if autor_buscar.lower() in libro["autor"].lower():
+
+            print("\nLibro encontrado:")
+            print(f"Título: {libro['titulo']}")
+            print(f"Autor: {libro['autor']}")
+            print(f"Año: {libro['año']}")
+
+            encontrado = True
+
+    if not encontrado:
+        print("No se encontraron libros de ese autor.")       
+
 
 # --------------------------------
 # Eliminar libro
@@ -126,9 +146,10 @@ while True:
     print("1. Registrar libro")
     print("2. Mostrar libros")
     print("3. Buscar libro")
-    print("4. Eliminar libro")
-    print("5. Mostrar libro más antiguo")
-    print("6. Salir")
+    print("4. Buscar libros por autor")
+    print("5. Eliminar libro")
+    print("6. Mostrar libro más antiguo")
+    print("7. Salir")
 
     opcion = input("Seleccione una opción: ")
 
@@ -143,14 +164,17 @@ while True:
         buscar_libro()
 
     elif opcion == "4":
-        eliminar_libro()
+        buscar_por_autor()
 
     elif opcion == "5":
-        libro_mas_antiguo()
+        eliminar_libro()
 
     elif opcion == "6":
+        libro_mas_antiguo()
+
+    elif opcion == "7":
         print("Saliendo del programa...")
         break
 
     else:
-        print("Opción inválida.")
+         print("Opción inválida.")
