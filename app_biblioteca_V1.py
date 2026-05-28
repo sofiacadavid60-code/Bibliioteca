@@ -78,7 +78,9 @@ def buscar_libro():
 
     if not encontrado:
         print("Libro no encontrado.")
-
+# -----------------
+# Buscar por Autor
+# -----------------
 def buscar_por_autor():
 
     autor_buscar = input("Ingrese el autor a buscar: ")
@@ -98,8 +100,33 @@ def buscar_por_autor():
 
     if not encontrado:
         print("No se encontraron libros de ese autor.")       
+# ------------------------------------
+# Actualizar informacion de un libro 
+# ------------------------------------
+def actualizar_libro():
 
+    titulo_buscar = input("Ingrese el título del libro a actualizar: ")
 
+    for libro in biblioteca:
+
+        if libro["titulo"].lower() == titulo_buscar.lower():
+
+            print("\nLibro encontrado.")
+            print("Ingrese los nuevos datos.")
+
+            nuevo_titulo = input("Nuevo título: ")
+            nuevo_autor = input("Nuevo autor: ")
+            nuevo_año = input("Nuevo año: ")
+
+            # Actualizar datos
+            libro["titulo"] = nuevo_titulo
+            libro["autor"] = nuevo_autor
+            libro["año"] = nuevo_año
+
+            print("Libro actualizado correctamente.")
+            return
+
+    print("Libro no encontrado.")
 # --------------------------------
 # Eliminar libro
 # --------------------------------
@@ -154,9 +181,10 @@ while True:
     print("3. Buscar libro")
     print("4. Buscar libros por autor")
     print("5. Eliminar libro")
-    print("6. Mostrar libro más antiguo")
-    print("7. Contar libros registrados")
-    print("8. Salir")
+    print("6. Actualizar libro")
+    print("7. Mostrar libro más antiguo")
+    print("8. Contar libros registrados")
+    print("9. Salir")
 
     opcion = input("Seleccione una opción: ")
 
@@ -177,12 +205,15 @@ while True:
         eliminar_libro()
 
     elif opcion == "6":
+        actualizar_libro()
+        
+    elif opcion == "7":
         libro_mas_antiguo()
 
-    elif opcion == "7":
+    elif opcion == "8":
         contar_libros()
 
-    elif opcion == "8":
+    elif opcion == "9":
         print("Saliendo del programa...")
         break
 
