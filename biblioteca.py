@@ -136,6 +136,12 @@ def libro_mas_antiguo():
     print(f"Autor: {antiguo['autor']}")
     print(f"Año: {antiguo['año']}")
 
+# --------------------------------
+# Contar libros registrados
+# --------------------------------
+def contar_libros():
+
+    print(f"\nTotal de libros registrados: {len(biblioteca)}")
 
 # --------------------------------
 # MENU PRINCIPAL
@@ -149,7 +155,8 @@ while True:
     print("4. Buscar libros por autor")
     print("5. Eliminar libro")
     print("6. Mostrar libro más antiguo")
-    print("7. Salir")
+    print("7. Contar libros registrados")
+    print("8. Salir")
 
     opcion = input("Seleccione una opción: ")
 
@@ -173,8 +180,11 @@ while True:
         libro_mas_antiguo()
 
     elif opcion == "7":
+        contar_libros()
+
+    elif opcion == "8":
         print("Saliendo del programa...")
         break
 
     else:
-         print("Opción inválida.")
+           print("Opción inválida.")
