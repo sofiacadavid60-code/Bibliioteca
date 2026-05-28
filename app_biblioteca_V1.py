@@ -1,11 +1,18 @@
+import os
 # ==============================
 # SISTEMA DE BIBLIOTECA
 # ==============================
 
 # Lista donde se guardan los libros
 biblioteca = []
-
-
+# --------------------------
+# Limpiar pantalla
+# --------------------------
+def limpiar_pantalla():
+    if os.name == "nt":
+        os.system("cls") #Windows
+    else:
+        os.system("clear") #MAC y LINUX
 # --------------------------------
 # Registrar libro
 # --------------------------------
@@ -32,7 +39,7 @@ def registrar_libro():
     # Agregar libro a la lista
     biblioteca.append(libro)
 
-    print("Libro registrado correctamente.")
+    print("✅ Libro registrado correctamente.")
 
 
 # --------------------------------
@@ -126,7 +133,7 @@ def actualizar_libro():
             print("Libro actualizado correctamente.")
             return
 
-    print("Libro no encontrado.")
+    print("❌ Libro no encontrado.")
 # --------------------------------
 # Eliminar libro
 # --------------------------------
@@ -140,10 +147,10 @@ def eliminar_libro():
 
             biblioteca.remove(libro)
 
-            print("Libro eliminado correctamente.")
+            print("🗑️ Libro eliminado correctamente.")
             return
 
-    print("No se encontró el libro.")
+    print("❌ No se encontró el libro.")
 
 
 # --------------------------------
@@ -173,49 +180,68 @@ def contar_libros():
 # --------------------------------
 # MENU PRINCIPAL
 # --------------------------------
+# --------------------------------
+# Mostrar menú
+# --------------------------------
+def mostrar_menu():
+
+    print("\n" + "=" * 45)
+    print("📚       SISTEMA DE BIBLIOTECA       📚")
+    print("=" * 45)
+
+    print("1️⃣  Registrar libro")
+    print("2️⃣  Mostrar libros")
+    print("3️⃣  Buscar libro")
+    print("4️⃣  Buscar libros por autor")
+    print("5️⃣  Eliminar libro")
+    print("6️⃣  Actualizar libro")
+    print("7️⃣  Mostrar libro más antiguo")
+    print("8️⃣  Contar libros registrados")
+    print("9️⃣  Salir")
+
+    print("=" * 45)
 while True:
-
-    print("\n===== BIBLIOTECA =====")
-    print("1. Registrar libro")
-    print("2. Mostrar libros")
-    print("3. Buscar libro")
-    print("4. Buscar libros por autor")
-    print("5. Eliminar libro")
-    print("6. Actualizar libro")
-    print("7. Mostrar libro más antiguo")
-    print("8. Contar libros registrados")
-    print("9. Salir")
-
-    opcion = input("Seleccione una opción: ")
+    
+    limpiar_pantalla()
+    mostrar_menu()
+    opcion = input("👉 Seleccione una opción: ")
 
     # Validar opción
     if opcion == "1":
         registrar_libro()
-
+        input("\nPresione ENTER para continuar...")
+        
     elif opcion == "2":
         mostrar_libros()
-
+        input("\nPresione ENTER para continuar...")
+        
     elif opcion == "3":
         buscar_libro()
-
+        input("\nPresione ENTER para continuar...")
+        
     elif opcion == "4":
         buscar_por_autor()
-
+        input("\nPresione ENTER para continuar...")
+        
     elif opcion == "5":
         eliminar_libro()
-
+        input("\nPresione ENTER para continuar...")
+        
     elif opcion == "6":
         actualizar_libro()
-        
+        input("\nPresione ENTER para continuar...")
+              
     elif opcion == "7":
         libro_mas_antiguo()
-
+        input("\nPresione ENTER para continuar...")
+        
     elif opcion == "8":
         contar_libros()
-
+        input("\nPresione ENTER para continuar...")
+        
     elif opcion == "9":
         print("Saliendo del programa...")
         break
 
     else:
-           print("Opción inválida.")
+       print("⚠️ Opción inválida. Intente nuevamente.")
