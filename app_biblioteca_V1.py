@@ -18,9 +18,13 @@ def registrar_libro():
         if libro["titulo"].lower() == titulo.lower():
             print("Ese libro ya está registrado.")
             return
-
+        
     autor = input("Ingrese el autor: ")
+
     año = input("Ingrese el año de publicación: ")
+
+    while not año.isdigit():
+        año = input("Ingrese un año válido: ")
 
     # Crear diccionario del libro
     libro = {
@@ -135,7 +139,39 @@ def libro_mas_antiguo():
     print(f"Título: {antiguo['titulo']}")
     print(f"Autor: {antiguo['autor']}")
     print(f"Año: {antiguo['año']}")
+# --------------------------------
+# ACTUALIZAR INFO_LIBRO
+# --------------------------------
+def actualizar_libro():
+    titulo_buscar= input("Ingrese el titulo del libro a actualizar: ")
+    for libro in biblioteca:
+        if libro["titulo"].lower() == titulo_buscar.lower():
+            print("\nLibro encontrado.")
+            print("Ingrese los nuevos datos.")
 
+            nuevo_titulo = input("Nuevo título: ")
+            nuevo_autor = input("Nuevo autor: ")
+            nuevo_año = input("Nuevo año: ")
+
+    while not nuevo_año.isdigit():
+            nuevo_año = input("Ingrese un año válido: ")
+
+            # Actualizar datos
+            libro["titulo"] = nuevo_titulo
+            libro["autor"] = nuevo_autor
+            libro["año"] = nuevo_año
+
+            print("Libro actualizado correctamente.")
+            return
+
+    print("Libro no encontrado.")
+
+# --------------------------------
+# Contar libros registrados
+# --------------------------------
+def contar_libros():
+
+    print(f"\nTotal de libros registrados: {len(biblioteca)}")
 
 # --------------------------------
 # MENU PRINCIPAL
@@ -148,8 +184,10 @@ while True:
     print("3. Buscar libro")
     print("4. Buscar libros por autor")
     print("5. Eliminar libro")
-    print("6. Mostrar libro más antiguo")
-    print("7. Salir")
+    print("6. Actualizar informacion del libro")
+    print("7. Mostrar libro más antiguo")
+    print("8. Contar libros registrados")
+    print("9. Salir")
 
     opcion = input("Seleccione una opción: ")
 
@@ -170,9 +208,15 @@ while True:
         eliminar_libro()
 
     elif opcion == "6":
-        libro_mas_antiguo()
+        actualizar_libro()
 
     elif opcion == "7":
+        libro_mas_antiguo()
+
+    elif opcion == "8":
+        contar_libros()
+
+    elif opcion == "9":
         print("Saliendo del programa...")
         break
 
